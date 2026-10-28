@@ -19,11 +19,13 @@ function setup() {
     delete: vi.fn().mockReturnValue(of(void 0))
   };
   const catalogRepo = { search: vi.fn().mockReturnValue(of([] as CatalogBook[])) };
-  TestBed.configureTestingModule({ providers: [
-    BookState,
-    { provide: BOOK_REPOSITORY, useValue: booksRepo },
-    { provide: CATALOG_REPOSITORY, useValue: catalogRepo }
-  ] });
+  TestBed.configureTestingModule({
+    providers: [
+      BookState,
+      { provide: BOOK_REPOSITORY, useValue: booksRepo },
+      { provide: CATALOG_REPOSITORY, useValue: catalogRepo }
+    ]
+  });
   return { state: TestBed.inject(BookState), booksRepo, catalogRepo };
 }
 
